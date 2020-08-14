@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>
+            Add Contest - CodeWorld
+        </title>
+        <style>
+            .navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  height:80px;
+  width: 100%;
+  line-height: 40px;
+  vertical-align: middle;
+  z-index: 1;
+}
+.navbar button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.navbar a ,.navbar button {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar a:hover,
+.navbar .active, .navbar button  {
+  background: #ddd;
+  color: black;
+
+}
+.form {
+    position: relative;
+    top:140px
+}
+.btn {
+    position: relative;
+    top:100px;
+    left: 150px
+}
+
+        </style>
+    </head>
+    <body>
+        <%- include('./includes/navigation.ejs') %>
+        <form class="form" action="/add-contest" method="POST">
+            <label name="link">Link Of The Contest :</label>
+        <input type="text" name="link" placeholder="Paste Link">
+        <br>
+        <label name="type">Type : </label>
+        <input type="type" name="type" placeholder="DSA/ Web dev/etc" >
+        <br>
+        <label name="date">Date : </label>
+        <input type="date" name="date" >
+        <br>
+        <label name="stime">Start Time ((hh:mm am/pm)) : </label>
+        <input type="time" name="stime" >
+        <br>
+        <label name="eTime">End Time ((hh:mm am/pm)): </label>
+        <input type="time" name="etime" >
+        <br>
+        <button>Add Contest</button>
+        <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+        </form>
+        <a href="/contest"><button class="btn">Cancel</button></a>
+    </body>
+</html>

@@ -1,0 +1,435 @@
+<html>
+    <head>
+        <title>
+            Problemset-CodeWorld!!
+        </title>
+    </head>
+    <style>
+         .navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  height:80px;
+  width: 100%;
+  line-height: 40px;
+  vertical-align: middle;
+  z-index: 1;
+}
+
+.navbar button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.navbar a ,.navbar button {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar a:hover,
+.navbar .active, .navbar button  {
+  background: #ddd;
+  color: black;
+
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Oxygen);
+
+/* Page layout */
+
+body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: 'Oxygen', sans-serif;
+    color: #444;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 300;
+}
+
+header {
+    margin: 0;
+    background: #000;
+    height: 65px;
+    padding: 1px;
+}
+
+article {
+    margin: 40px 30px;
+}
+
+h1 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 1px;
+    font-size: 2.3em;
+    line-height: 44px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 900;
+    margin: 0;
+    padding: 10px 0 0 30px;
+    letter-spacing: 2px;
+}
+
+h2 { margin: 20px 0 10px 0;
+    font-weight: 900;
+}
+
+p {
+    margin: 20px 0 5px 0;
+}
+
+
+/* Table Layout */
+
+table.vitamins {
+    margin: 20px 0 0 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: #212121;
+    color: #fff;
+}
+
+table.vitamins th, table.vitamins td {
+    text-align: center;
+}
+
+table.vitamins thead {
+    line-height: 12px;
+    background: #2e63e7;
+    text-transform: uppercase;
+}
+
+table.vitamins thead th {
+    color: #fff;
+    padding: 10px;
+    letter-spacing: 1px;
+    vertical-align: bottom;
+}
+
+table.vitamins thead th:nth-child(1) {
+    width: 20%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+table.vitamins thead th:nth-child(2) {
+    width: 30%;
+}
+
+table.vitamins thead th:nth-child(3) {
+    width: 35%;
+}
+
+table.vitamins thead th:nth-child(4) {
+    width: 15%;
+}
+
+table.vitamins tbody {
+    font-size: 1em;
+    line-height: 15px;
+}
+
+table.vitamins tbody tr {
+    border-top: 2px solid rgba(109, 176, 231, 0.8);
+    transition: background 0.6s, color 0.6s;
+}
+
+table.vitamins tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+table.vitamins tbody tr:hover {
+    color: #000;
+    background: rgba(255, 255, 255, 0.7);
+    font-weight: 900;
+}
+
+table.vitamins tbody td {
+    padding: 12px;
+}
+
+table.vitamins tbody tr:hover td:first-child {
+    background: rgba(0,0,0,0);
+}
+
+table.vitamins tbody td:first-child {
+    text-align: left;
+    padding-left: 20px;
+    font-weight: 700;
+    background: rgba(109, 176, 231, 0.35);
+    transition: backgrounf 0.6s;
+}
+
+table.vitamins tfoot {
+    font-size: 0.8em;
+}
+
+table.vitamins tfoot tr {
+    border-top: 2px solid #2e63e7;
+}
+
+table.vitamins tfoot td {
+    color: rgba(255,255,215,0.6);
+    text-align: left;
+    line-height: 15px;
+    padding: 15px 20px;
+}
+
+
+/* Mobile Layout */
+
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 34px;
+        line-height: 36px;
+        padding-left: 15px;
+    }
+
+    article {
+        margin: 10px 15px;
+    }
+
+    table.vitamins {
+        font-size: 0.8em;
+    }
+}
+
+    </style>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br><br><br><br><br><br>
+   
+    <header>
+      <h1>Problem Set</h1>
+  </header>
+  <article>
+      <h2>Data Structures</h2>
+     
+      <table class="vitamins">
+          <thead>
+              <tr>
+                  <th>Topics</th>
+                  <th>Number of Questions</th>
+                  <th>Last Update</th>
+                  <th> User who last updated</th>
+              </tr>
+          </thead>
+          <tfoot>
+              <tr>
+                  <td colspan="4">
+                      <p><strong>Keep The Questions Coming...</strong> </p>
+                 
+                  </td>
+              </tr>
+          </tfoot>
+          <tbody>
+              <tr>
+                  <td><a href="/problem/arrays" style="color:white; font-size:20px; text-decoration:none">Arrays</a></td>
+                  <td><%=ques.array.length %></td>
+                  <% if(ques.array.length >0) { %>
+                    <td><%=ques.array[ques.array.length-1].date %></td>
+                    <td><%=ques.array[ques.array.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+              </tr>
+              <tr>
+                <td><a href="/problem/strings " style="color:white; font-size:20px; text-decoration:none">Strings</a></td>
+                <td><%=ques.strings.length %></td>
+                <% if(ques.strings.length >0) { %>
+                    <td><%=ques.strings[ques.strings.length-1].date %></td>
+                    <td><%=ques.strings[ques.strings.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+              </tr>
+              <tr>
+                <td><a href="/problem/stacks" style="color:white; font-size:20px; text-decoration:none">Stacks</a></td>
+                <td><%=ques.stacks.length %></td>
+                <% if(ques.stacks.length >0) { %>
+                    <td><%=ques.stacks[ques.stacks.length-1].date %></td>
+                    <td><%=ques.stacks[ques.stacks.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+              </tr>
+              <tr>
+                <td><a href="/problem/queues " style="color:white; font-size:20px; text-decoration:none">Queues</a></td>
+                <td><%=ques.queues.length %></td>
+                <% if(ques.queues.length >0) { %>
+                    <td><%=ques.queues[ques.queues.length-1].date %></td>
+                    <td><%=ques.queues[ques.queues.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+              </tr>
+              <tr>
+                <td><a href="/problem/heaps " style="color:white; font-size:20px; text-decoration:none">Heaps</a></td>
+                <td><%=ques.heaps.length %></td>
+                <% if(ques.heaps.length >0) { %>
+                    <td><%=ques.heaps[ques.heaps.length-1].date %></td>
+                    <td><%=ques.heaps[ques.heaps.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+              </tr>
+              <tr>
+                <td><a href="/problem/trees " style="color:white; font-size:20px; text-decoration:none">Trees</a></td>
+                <td><%=ques.trees.length %></td>
+                <% if(ques.trees.length >0) { %>
+                    <td><%=ques.trees[ques.trees.length-1].date %></td>
+                    <td><%=ques.trees[ques.trees.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+              </tr>
+              <tr>
+                <td><a href="/problem/graphs" style="color:white; font-size:20px; text-decoration:none">Graphs</a></td>
+                <td><%=ques.graphs.length %></td>
+                <% if(ques.graphs.length >0) { %>
+                    <td><%=ques.graphs[ques.graphs.length-1].date %></td>
+                    <td><%=ques.graphs[ques.graphs.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+              </tr>
+             
+              </tr>
+          </tbody>
+      </table>
+  </article>
+  
+  
+<article>
+    <h2>Algorithm </h2>
+   
+    <table class="vitamins">
+        <thead>
+            <tr>
+                <th>Topics</th>
+                <th>Number of Questions</th>
+                <th>Last Update</th>
+                <th> User who last updated</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <p><strong>Keep The Questions Coming...</strong> </p>
+               
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td><a href="/problem/sorting " style="color:white; font-size:20px; text-decoration:none">Sorting</a></td>
+                <td><%=ques.sorting.length %></td>
+                <% if(ques.sorting.length >0) { %>
+                    <td><%=ques.sorting[ques.sorting.length-1].date %></td>
+                    <td><%=ques.sorting[ques.sorting.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+            </tr>
+            <tr>
+              <td><a href="/problem/searching" style="color:white; font-size:20px; text-decoration:none">Searching</a></td>
+              <td><%=ques.searching.length %></td>
+                <% if(ques.searching.length >0) { %>
+                    <td><%=ques.searching[ques.searching.length-1].date %></td>
+                    <td><%=ques.searching[ques.searching.length-1].userid %></td>
+                    <% } else {%>
+                    <td>--</td>
+                    <td>--</td>
+                    <% } %>
+            </tr>
+            <tr>
+              <td><a href="/problem/dp" style="color:white; font-size:20px; text-decoration:none">Dynamic Programming</a></td>
+              <td><%=ques.dp.length %></td>
+              <% if(ques.dp.length >0) { %>
+                <td><%=ques.dp[ques.dp.length-1].date %></td>
+                <td><%=ques.dp[ques.dp.length-1].userid %></td>
+                <% } else {%>
+                <td>--</td>
+                <td>--</td>
+                <% } %>
+            </tr>
+            <tr>
+              <td><a href="/problem/greedy" style="color:white; font-size:20px; text-decoration:none">Greedy Algo</a></td>
+              <td><%=ques.greedy.length %></td>
+              <% if(ques.greedy.length >0) { %>
+                <td><%=ques.greedy[ques.greedy.length-1].date %></td>
+                <td><%=ques.greedy[ques.greedy.length-1].userid %></td>
+                <% } else {%>
+                <td>--</td>
+                <td>--</td>
+                <% } %>
+            </tr>
+            <tr>
+              <td><a href="/problem/hashing" style="color:white; font-size:20px; text-decoration:none">Hashing</a></td>
+              <td><%=ques.hashing.length %></td>
+              <% if(ques.hashing.length >0) { %>
+                <td><%=ques.hashing[ques.hashing.length-1].date %></td>
+                <td><%=ques.hashing[ques.hashing.length-1].userid %></td>
+                <% } else {%>
+                <td>--</td>
+                <td>--</td>
+                <% } %>
+            </tr>
+            <tr>
+              <td><a href="/problem/bit" style="color:white; font-size:20px; text-decoration:none">Bit Manipulation</a></td>
+              <td><%=ques.bit.length %></td>
+              <% if(ques.bit.length >0) { %>
+                <td><%=ques.bit[ques.bit.length-1].date %></td>
+                <td><%=ques.bit[ques.bit.length-1].userid %></td>
+                <% } else {%>
+                <td>--</td>
+                <td>--</td>
+                <% } %>
+            </tr>
+            <tr>
+              <td><a href="/problem/misc" style="color:white; font-size:20px; text-decoration:none">Misc</a></td>
+              <td><%=ques.misc.length %></td>
+              <% if(ques.misc.length >0) { %>
+                <td><%=ques.misc[ques.misc.length-1].date %></td>
+                <td><%=ques.misc[ques.misc.length-1].userid %></td>
+                <% } else {%>
+                <td>--</td>
+                <td>--</td>
+                <% } %>
+            </tr>
+           
+            </tr>
+        </tbody>
+    </table>
+</article>
+
+  
+  
+  
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>
+            Blogs
+        </title>
+    </head>
+    <style>
+        .navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  height:80px;
+  width: 100%;
+  line-height: 40px;
+  vertical-align: middle;
+  z-index: 1;
+}
+
+.navbar button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.navbar a ,.navbar button {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar a:hover,
+.navbar .active, .navbar button  {
+  background: #ddd;
+  color: black;
+
+}
+    </style>
+    <body>
+        <%- include('./includes/navigation.ejs') %>
+        <br>
+        <br><br><br>
+<h1 style="text-align: center; font-size:90px">--Blogs--</h1>
+<br><br><br>
+<% if(blog.length>0) { %>
+  <hr>
+    <% for( let i = blog.length-1; i>=0 ;i-- ) { %>
+          <div class="blog" style="text-align: center;">
+            <h3> <%=blog[i].title %> </h3>
+            <h3><%= blog[i].date %> </h3>
+            <p>By: <a href="/profile/<%=blog[i].userid%>"><%=blog[i].userName%></a>  </p> 
+            <a href="/like/<%=blog[i]._id %>"><button>LIKE</button></a>
+            <span><%=blog[i].like%></span>
+            <a href="/full-blog/<%=blog[i]._id%>"><button>COMMENT</button></a>
+            <span><%=blog[i].comment.length %></span>
+           <a href="/full-blog/<%=blog[i]._id %>" ><button>Read More</button></a>
+          </div>
+          <hr>
+          
+          <% } %>
+<% } else { %>
+
+    <h1 style="text-align: center; font-size:90px">No Blogs</h1>
+    <% } %>
+
+    </body>
+</html>
+

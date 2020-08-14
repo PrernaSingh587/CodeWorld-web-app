@@ -1,0 +1,26 @@
+<div class="navbar">
+    <% if(isAuthenticated) { %>
+<a href="/dashboard" class="<%= path === '/' ? 'active' : 'none' %>">My Profile</a>
+<a href="/blogs"  class="<%= path === '/blogs' ? 'active' : 'none' %>"> Blogs</a>
+<a href="/contest"  class="<%= path === '/contest' ? 'active' : 'none' %>">Contest</a>
+<a href ="/leaderboard"  class="<%= path === '/leaderboard' ? 'active' : 'none' %>">LeaderBoard</a>
+<a href ="/write-blog"  class="<%= path === '/write-blog' ? 'active' : 'none' %>">Write Blog</a>
+<a href="/problem" class="<%= path ==='/problem' ? 'active' : 'none' %>" >Problemset</a>
+<% if(EMAIL === 'prerna.singh587@gmail.com') { %>
+<a href="/admin-blog"  class="<%= path === '/admin-blog' ? 'active' : 'none' %>">Admin</a>
+<% } %>
+<a href="/members">Members</a>
+<% } %>
+<% if(!isAuthenticated) { %>
+    <a href="/blogs"  class="<%= path === '/blogs' ? 'active' : 'none' %>"> Blogs</a>
+<a href="/signup" style="float:right" class="<%= path ==='/signup' ? 'active' : 'none' %>">Sign Up</a>
+<a href="/login"  style="float:right" class="<%= path ==='/login' ? 'active' : 'none' %>">Login</a>
+<% } %>
+<% if(isAuthenticated) { %>
+    <form action='/logout' method="POST" name="forms">
+        <input type ="hidden" name="_csrf" value = "<%= csrfToken %>" >
+       <button class="btn-btn" style="float:right">Sign Out</button>
+        </form>
+<% } %>
+
+</div>

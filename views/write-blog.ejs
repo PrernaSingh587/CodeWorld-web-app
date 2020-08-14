@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>
+            Write Blog
+        </title>
+        <style>
+            	.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  height:80px;
+  width: 100%;
+  line-height: 40px;
+  vertical-align: middle;
+  z-index: 1;
+}
+.navbar button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.navbar a ,.navbar button {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar a:hover,
+.navbar .active, .navbar button  {
+  background: #ddd;
+  color: black;
+
+}
+        </style>
+    </head>
+    <body>
+      <%- include('./includes/navigation.ejs') %>
+<br><br><br><br>
+
+        <h1 style="text-align: center; font-size:60px">Write a BLOG</h1>
+        <div style="text-align: center;">
+          <form action ="/write-blog" method="POST">
+            <label name="title" style="font-size: 50px">Title:</label><br><br>
+            <input type="text" style="width:810px ; font-size:40px; height: 60px" name="title" placeholder="Write" value="<% if(edit) { %> <%= title %> <% } %>">
+            <br> <br>
+            <label style="font-size: 50px" name="desc">Description:</label><br><br>
+            <textarea style="font-size: 20px;  resize:none" name="desc" rows="20" cols="90" ><% if(edit) { %> <%= desc %> <% } %></textarea>
+           <br><br> <button style="font-size: 30px;height:60px; width:190px" type="submit">Submit</button>
+            <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+            <input type="hidden" name="edit" value="<%= edit %>">
+            <input type="hidden" name="id" value="<%=params%>">
+            <input type="hidden" name="userid" value="<%=userid%>">
+            </form>
+        </div>
+      
+    </body>
+</html>

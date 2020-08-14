@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <title>
+            Contests - CodeWorld
+        </title>
+        <style>
+                .navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  height:80px;
+  width: 100%;
+  line-height: 40px;
+  vertical-align: middle;
+  z-index: 1;
+}
+
+.navbar button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.navbar a ,.navbar button {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar a:hover,
+.navbar .active, .navbar button  {
+  background: #ddd;
+  color: black;
+
+}
+html,
+body {
+	height: 100%;
+    width: 70%;
+}
+
+body {
+	margin: 0;
+	background: linear-gradient(45deg, #49a09d, #5f2c82);
+	font-family: sans-serif;
+	font-weight: 100;
+    word-wrap: break-word
+}
+
+.container {
+	position: relative;
+	top: 30%;
+	left:60%;
+	transform: translate(-50%, -50%);
+}
+
+table {
+	width: 800px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+
+th {
+	text-align: left;
+}
+
+
+        </style>
+    </head>
+    <body>
+        <%- include('./includes/navigation.ejs') %>
+
+        <div class="container">
+            
+            <h1>Upcoming Contest</h1> 
+            <% if(email === 'prerna.singh587@gmail.com') { %>
+                <a href="/add-contest"><button>Add Contest</button></a><br><br><br>
+            <% }  %>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>CONTEST LINK</th>
+                        <th>DATE </th>
+                        <th>STARTS AT </th>
+                        <th>ENDS AT </th>
+                        <th>TYPE</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                <% if(contest.length >0) {%>
+                    <% for(let i=contest.length-1;i>=0;i--) { %>
+               
+                    <tr>
+                        <td><a href="<%=contest[i].link %>"><%=contest[i].link %></a></td>
+                        <td><%=contest[i].date %></td>
+                        <td><%=contest[i].sTime %></td> 
+                        <td><%=contest[i].eTime %></td>
+                        <td><%=contest[i].type %></td>
+                       
+                    </tr>
+                       <% } %>
+                       <%} else { %>
+                        <tr>
+                            <td colspan="5"> No Items</td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container">
+            <h1>Past Contest</h1> 
+            <table>
+                <thead>
+                    <tr>
+                        <th>CONTEST LINK</th>
+                        <th>DATE </th>
+                        <th>STARTS AT </th>
+                        <th>ENDS AT </th>
+                        <th>TYPE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td>Cell 2</td>
+                        <td>Cell 3</td>
+                        <td>Cell 4</td>
+                        <td>Cell 4</td>
+                    </tr>
+                       
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>
+            Add Ques-CodeWorld
+        </title>
+        <style>
+            	.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  height:80px;
+  width: 100%;
+  line-height: 40px;
+  vertical-align: middle;
+  z-index: 1;
+}
+.navbar button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.navbar a ,.navbar button {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar a:hover,
+.navbar .active, .navbar button  {
+  background: #ddd;
+  color: black;
+
+}
+.form {
+    position: relative;
+    top:140px
+}
+.btn {
+    position: relative;
+    top:95px;
+    left: 600px
+}
+
+        </style>
+    </head>
+
+<body>
+    <%- include('./includes/navigation.ejs') %>
+   Something
+  
+<form class="form" action="/problem/add/<%=topic %>" method="POST">
+    <label name="link">Link Of The Question</label>
+<input  type="text" name="link">
+<input type="hidden" name="date" value="<%=date %>">
+<input type="hidden" name="userid" value="<%= userid %>">
+<input type="hidden" name="_csrf" value="<%=csrfToken %>">
+<button>Add Question</button>
+
+</form>
+<a href="/problem/<%=topic%>"><button class="btn">Cancel</button></a>
+
+
+
+
+    
+</body>
+
+
+
+
+
+
+</html>
