@@ -33,7 +33,8 @@ const store = new MongoDBStore({
 });
 const csrfProtection = csrf();
 
-app.use(session({secret:'my secret', resave: false, saveUninitialized: false,store: store}))
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(session({secret:'my secret', resave: false,  cookie: { maxAge: oneDay }, saveUninitialized: false,store: store}))
 console.log("I came back up!!");
 app.use(csrfProtection);
 app.use(flash());
